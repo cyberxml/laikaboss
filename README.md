@@ -95,15 +95,15 @@ Laika BOSS has been tested on the latest versions of CentOS and Ubuntu LTS
 	There is no Yara package for CentOS, so we have to build it from source. You can't use a checkout from Github as it won't contain the Python code; you must download one of the [release versions](https://github.com/virustotal/yara/releases). The following uses Yara version 3.5.0
 
 	```shell
-	wget https://github.com/VirusTotal/yara/archive/v3.5.0.zip
-	unzip yara-3.5.0.zip
-	cd yara-3.5.0
-	chmod +x ./build.sh
-	./build.sh
+	wget https://github.com/VirusTotal/yara/archive/v3.6.3.tar.gz
+	tar xvzf v3.6.3.tar.gz
+	rm v3.6.3.tar.gz
+	cd yara-3.6.3
+	./bootstrap.sh
+	./configure
+	make
 	sudo make install
-	cd yara-python
-	python setup.py build
-	sudo python setup.py install
+	pip install yara-python
 	```
 
 4. Install pyexif
@@ -111,6 +111,7 @@ Laika BOSS has been tested on the latest versions of CentOS and Ubuntu LTS
 	```shell
 	wget https://github.com/smarnach/pyexiftool/archive/master.zip
 	unzip master.zip
+	cd pyexiftool-master
 	python setup.py build
 	sudo python setup.py install
 	```
@@ -118,9 +119,9 @@ Laika BOSS has been tested on the latest versions of CentOS and Ubuntu LTS
 5. Install pefile
 
 	```shell
-	wget https://github.com/erocarrera/pefile/archive/pefile-1.2.10-139.tar.gz
-	tar vxzf pefile-1.2.10-139.tar.gz
-	cd pefile-1.2.10-139
+	wget https://github.com/erocarrera/pefile/releases/download/v2017.9.3/pefile-2017.9.3.tar.gz
+	tar xvzf pefile-2017.9.3.tar.gz 
+	cd pefile-2017.9.3
 	python setup.py build
 	python setup.py install --user
 	```
